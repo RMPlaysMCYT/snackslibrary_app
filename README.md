@@ -1,6 +1,7 @@
 # snackslibrary_app
 
 A new Flutter project. However this was mixed of vibe-coded however I'll make this as my template so that I can use to develop apps in the future
+THIS WAS INTEGRATED WITH [THIS ONE](https://github.com/RMPlaysMCYT/SnacksLibraryAPI)
 
 ## Getting Started
 
