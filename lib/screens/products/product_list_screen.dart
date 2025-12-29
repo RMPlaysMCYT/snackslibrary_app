@@ -6,6 +6,7 @@ import 'product_form_screen.dart';
 import 'product_detail_screen.dart';
 import '../../models/product.dart';
 import '../about_screen.dart';
+import '../settings_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
   @override
@@ -55,6 +56,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
               context,
               MaterialPageRoute(builder: (context) => AboutScreen()),
             ),
+          ),
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsScreen()),
+            ),
+            icon: Icon(Icons.settings),
           ),
         ],
       ),

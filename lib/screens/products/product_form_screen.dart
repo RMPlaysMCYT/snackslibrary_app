@@ -7,9 +7,10 @@ class ProductFormScreen extends StatefulWidget {
   final Product? product;
   final VoidCallback? onProductSaved;
 
-  ProductFormScreen({this.product, this.onProductSaved});
+  const ProductFormScreen({this.product, this.onProductSaved});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProductFormScreenState createState() => _ProductFormScreenState();
 }
 

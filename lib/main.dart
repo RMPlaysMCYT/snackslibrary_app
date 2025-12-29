@@ -1,7 +1,7 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/product_provider.dart';
+import 'providers/theme_provider.dart'; // <-- import ThemeProvider
 import 'screens/products/product_list_screen.dart';
 
 void main() {
@@ -14,21 +14,27 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ProductProvider()),
-        // Add more providers here if needed
+        ChangeNotifierProvider(create: (context) => ThemeProvider()), // Theme provider
       ],
-      child: MaterialApp(
-        title: 'Product Management',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.blue,
-            foregroundColor: Colors.white,
-            elevation: 2,
-          ),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: ProductListScreen(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'Product Management',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                elevation: 2,
+              ),
+            ),
+            darkTheme: ThemeData.dark(),
+            themeMode: themeProvider.currentTheme,
+            debugShowCheckedModeBanner: false,
+            home: ProductListScreen(),
+          );
+        },
       ),
     );
   }
