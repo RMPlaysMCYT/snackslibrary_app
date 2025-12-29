@@ -207,7 +207,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.tag),
                       filled: true,
-                      fillColor: Colors.grey[50],
+                      fillColor:
+                          Theme.of(context).inputDecorationTheme.fillColor ??
+                          Theme.of(context).colorScheme.surface,
                     ),
                     keyboardType: TextInputType.number,
                     validator: (value) {
@@ -231,7 +233,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.shopping_bag),
                       filled: true,
-                      fillColor: Colors.grey[50],
+                      // fillColor: Colors.grey[50],
+                      fillColor:
+                          Theme.of(context).inputDecorationTheme.fillColor ??
+                          Theme.of(context).colorScheme.surface,
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -254,7 +259,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.attach_money),
                       filled: true,
-                      fillColor: Colors.grey[50],
+                      // fillColor: Colors.grey[50],
+                      fillColor:
+                          Theme.of(context).inputDecorationTheme.fillColor ??
+                          Theme.of(context).colorScheme.surface,
                     ),
                     keyboardType: TextInputType.numberWithOptions(
                       decimal: true,
@@ -284,7 +292,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                       border: OutlineInputBorder(),
                       alignLabelWithHint: true,
                       filled: true,
-                      fillColor: Colors.grey[50],
+                      // fillColor: Colors.grey[50],
+                      fillColor:
+                          Theme.of(context).inputDecorationTheme.fillColor ??
+                          Theme.of(context).colorScheme.surface,
                     ),
                     maxLines: 4,
                     minLines: 3,

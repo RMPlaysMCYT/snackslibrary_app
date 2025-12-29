@@ -11,14 +11,33 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Settings')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Dark Mode', style: TextStyle(fontSize: 18)),
-            Spacer(),
-            Switch(
-              value: themeProvider.isDarkMode,
+            Text('App Theme', style: TextStyle(fontSize: 18)),
+            SizedBox(height: 10),
+            RadioListTile<ThemeMode>(
+              title: Text('Follow System'),
+              value: ThemeMode.system,
+              groupValue: themeProvider.themeMode,
               onChanged: (value) {
-                themeProvider.toggleTheme(value);
+                themeProvider.setTheme(value!);
+              },
+            ),
+            RadioListTile<ThemeMode>(
+              title: Text('Light Mode'),
+              value: ThemeMode.light,
+              groupValue: themeProvider.themeMode,
+              onChanged: (value) {
+                themeProvider.setTheme(value!);
+              },
+            ),
+            RadioListTile<ThemeMode>(
+              title: Text('Dark Mode'),
+              value: ThemeMode.dark,
+              groupValue: themeProvider.themeMode,
+              onChanged: (value) {
+                themeProvider.setTheme(value!);
               },
             ),
           ],

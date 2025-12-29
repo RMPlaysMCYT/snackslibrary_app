@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/product_provider.dart';
-import 'providers/theme_provider.dart'; // <-- import ThemeProvider
+import 'providers/theme_provider.dart';
 import 'screens/products/product_list_screen.dart';
 
 void main() {
@@ -13,24 +13,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ProductProvider()),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()), // Theme provider
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
             title: 'Product Management',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
+            theme: ThemeData.light().copyWith(
+              primaryColor: Colors.blue,
               appBarTheme: AppBarTheme(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
-                elevation: 2,
               ),
             ),
             darkTheme: ThemeData.dark(),
-            themeMode: themeProvider.currentTheme,
+            themeMode: themeProvider.themeMode, // <-- follows provider
             debugShowCheckedModeBanner: false,
             home: ProductListScreen(),
           );
