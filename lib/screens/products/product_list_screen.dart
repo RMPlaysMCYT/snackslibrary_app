@@ -5,6 +5,7 @@ import '../../providers/product_provider.dart';
 import 'product_form_screen.dart';
 import 'product_detail_screen.dart';
 import '../../models/product.dart';
+import '../about_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
   @override
@@ -40,13 +41,20 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Products'),
+        title: Text('Products Section'),
         actions: [
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: productProvider.isLoading
                 ? null
                 : () => productProvider.fetchProducts(),
+          ),
+          IconButton(
+            icon: Icon(Icons.info),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AboutScreen()),
+            ),
           ),
         ],
       ),
